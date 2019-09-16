@@ -12,16 +12,12 @@ materias = os.listdir("6to/")
 sub_dir = os.getcwd() + "/6to"
 
 #Opener
-opener = "6to\\"
-bk = "\\"
-k =r"\`"
-print(k)
+opener = "6to\\\\"
+
     #Fechas
 fecha_actual = datetime.datetime.now()    
 month_dir = fecha_actual.strftime("%B")
 day_name = fecha_actual.strftime("%d")
-
-#path = os.path.join(sub_dir,month_dir)    
 
 #Si la materia de parámetro existe
 if materia_req in materias:
@@ -46,13 +42,10 @@ if materia_req in materias:
             mainsub_dir = os.path.join(mainsub_dir, day_name)
             os.mkdir(mainsub_dir)
             #Aqui completamos y ejecutamos el Opener
-            opener = opener + month_dir + "\\" + day_name
+            opener += "\\\\" + month_dir + "\\\\" + day_name
             command = r"explorer.exe "+ opener
-            
-            os.system("explorer.exe 6to\\\ARTE\\\September")
-            print(opener+"\n"+ "Se ejecuto el comando tipo: \n" +"explorer.exe "+opener)
-
-            
+            os.system(command)
+            print(opener)
 
     #Si no hay mes
     else:
@@ -61,14 +54,12 @@ if materia_req in materias:
         nday_of_nmonth = os.path.join(mainsub_dir,day_name)
         os.mkdir(nday_of_nmonth)
         #Completamos y ejecutamos el Opener
-        opener = opener + month_dir + "\\" + day_name
+        opener += "\\\\" + month_dir + "\\\\" + day_name
         command = r"explorer.exe "+ opener
+        #Opener
+        os.system(command)
+        print(command)
         
-        os.system("explorer.exe 6to\\ARTE\\September")
-        print(command,"\n"+ "Se ejecuto el comando tipo: \n", command)
-        
-
-    
 else:
     print("Esta materia no existe. \nSeleccione alguna de las siguientes:\n")
     for materia in materias:
