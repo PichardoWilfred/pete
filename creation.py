@@ -13,7 +13,9 @@ sub_dir = os.getcwd() + "/6to"
 
 #Opener
 opener = "6to\\"
-x=5
+bk = "\\"
+k =r"\`"
+print(k)
     #Fechas
 fecha_actual = datetime.datetime.now()    
 month_dir = fecha_actual.strftime("%B")
@@ -28,7 +30,7 @@ if materia_req in materias:
     #Cuales meses se tiene registrado
     months_of = os.listdir(mainsub_dir)
     #Le da la materia al Opener
-    opener += materia_req+ "\\"
+    opener += materia_req+ ""
 
     #Si el mes actual esta ahí
     if month_dir in months_of:
@@ -46,8 +48,8 @@ if materia_req in materias:
             #Aqui completamos y ejecutamos el Opener
             opener = opener + month_dir + "\\" + day_name
             command = r"explorer.exe "+ opener
-            time.sleep(x)
-            os.system(r"explorer.exe 6to\ARTE\September\09")
+            
+            os.system("explorer.exe 6to\\\ARTE\\\September")
             print(opener+"\n"+ "Se ejecuto el comando tipo: \n" +"explorer.exe "+opener)
 
             
@@ -61,8 +63,8 @@ if materia_req in materias:
         #Completamos y ejecutamos el Opener
         opener = opener + month_dir + "\\" + day_name
         command = r"explorer.exe "+ opener
-        time.sleep(x)
-        os.system(r"explorer.exe 6to\ARTE\September\09")
+        
+        os.system("explorer.exe 6to\\ARTE\\September")
         print(command,"\n"+ "Se ejecuto el comando tipo: \n", command)
         
 
