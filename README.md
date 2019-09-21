@@ -6,9 +6,11 @@ Quiero dormirme me doy asco y ya abre la carpeta de la que se esta poniendo cont
 
 -Metas:
 
-  1- Que funcione con una interfaz/aplicación web maybe
+  1- Scouts Función
+  
+  2- Que funcione con una interfaz/aplicación web maybe
 	
-  2- Que te deje poner:
+  3- Que te deje poner:
 	
     a-) Tu curso
 		
