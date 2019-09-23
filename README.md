@@ -6,8 +6,6 @@ Quiero dormirme me doy asco y ya abre la carpeta de la que se esta poniendo cont
 
 -Metas:
 
-  1- Scouts Función
-  
   2- Que funcione con una interfaz/aplicación web maybe
 	
   3- Que te deje poner:
