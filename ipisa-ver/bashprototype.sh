@@ -2,8 +2,8 @@
 
 function ipisa() {
     subject=$1
-    export subject 
-    python3 creation.py 
+    export subject
+    python3 creation.py
 }
 
 function show-s () {
@@ -11,4 +11,8 @@ function show-s () {
     do
         echo $subject
     done
+}
+
+function hor () {
+    python3 hrio.py
 }
