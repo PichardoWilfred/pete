@@ -16,3 +16,5 @@ Quiero dormirme me doy asco y ya abre la carpeta de la que se esta poniendo cont
 		
     c-) Tu nombre
 		
+-Notas:
+  Para el error que dan los .sh: sed -i 's/\r//' .sh    

@@ -1,5 +1,4 @@
 import os
-import test
 import datetime
 import time
     #Nombres de Materias/Dir

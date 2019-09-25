@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function ipisa() {
+function ipisa () {
     subject=$1
     export subject
     python3 creation.py
@@ -15,4 +15,10 @@ function show-s () {
 
 function hor () {
     python3 hrio.py
+}
+
+function open (){
+    subject=$1
+    export subject
+    python3 file_opener.py
 }
