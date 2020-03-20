@@ -14,7 +14,7 @@ new <materia>              					Dentro del folder de la materia especificada
 
 open <materia> <mes> <dia>					Abre la carpeta de la materia/mes/dia especificados/as.
 
-show              						Enlista las materias disponibles para registrar trabajo.
+show              						Enlista las materias disponibles.
 
 tree                                    			Muestra las carpetas creadas hasta el momento.
 
@@ -25,9 +25,15 @@ add <materia> ...                                 		Para añadir una nueva mater
 -Debe de instalarse automaticamente ya sea con un instalador o descargando el archivo y que se 
 ejectue en path.
 -Registrar el nombre puesto del curso.
--Poder registrar las materias por medio de la interfaz.
--Poder registrar nuevas materias.
--Abrir por materia, por mes de materia, por dia de materia.
+
+[Cosas que quiero rehacer o hacer con argsparse]
+-Poder registrar las materias por medio de la consola
+-Poder registrar nuevas materias por la consola. Una o muchas
+-Abrir por materia, por mes de materia, por dia de materia. (OPEN)
+-Enlistar las materias disponibles (SHOW)
+-Que el comando principal tenga un -h y una pantalla de mala inserción
+-Comando Help bien hecho.
+
 
 
 
