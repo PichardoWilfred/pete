@@ -1,82 +1,86 @@
 import os
 import datetime
 import sys
+import commons
+import argparse
 
-# Nombre del curso
-curso = "Curso"
+
+parser = argparse.ArgumentParser(
+    description="Crear las carpetas para dividir las sesiones de trabajo.")
+parser.add_argument(
+    "materia", help="La materia en la cual trabajaremos", default=None)
+args = parser.parse_args()
 
 # La materia que seleccionamos en la que ibamos a trabajar
-materia_req = sys.argv[1]
-
-# El directorio donde estamos trabajando
-sub_dir = os.getcwd() + "\\" + curso + "\\"
-
-# Las materias que ya existen y en las que vamos a trabajar
-materias = []
-for materia in os.listdir(curso):
-    if os.path.isdir(sub_dir + materia):
-        materias.append(materia)
-# Los dias que ya existen
-dias_registrados = []
-# Los meses que ya existen
-meses_registrados = []
-
-# El string que se encargara de abrir la ruta u na vez creada
-abrir_aqui = curso + "\\"
+materia_req = args.materia
 
 # Fechas
 mes_actual = datetime.datetime.now().strftime("%B")
 dia_actual = datetime.datetime.now() .strftime("%d")
 
-# Si la materia de parámetro existe
-if materia_req in materias:
-    # Hace que vayas a ese directorio (el de la materia)
-    sub_dir += materia_req
-    # Cuales meses se tiene registrado
-    #meses_registrados = os.listdir(sub_dir)
-    for mes in os.listdir(sub_dir):
-        if os.path.isdir(sub_dir+"\\"+mes_actual):
-            meses_registrados.append(mes)
-    # Le da la materia al Opener
-    abrir_aqui += materia_req
-    # Si el mes actual esta ahí
-    if mes_actual in meses_registrados:
-        # Aqui creamos el directorio del mes
-        sub_dir += "\\" + mes_actual
-        # Lista de Dias que ya han sido usados
-        for dia in os.listdir(sub_dir):
-            if os.path.isdir(sub_dir+"\\"+dia):
-                dias_registrados.append(dia)
+# Crear las carpetas del dia y mes actuales.
 
-    # Si el dia de hoy esta en los días registrados
-        if dia_actual in dias_registrados:
-            # Simplemente abrimos la carpeta de ese dia
-            abrir_aqui += "\\" + mes_actual + "\\"+dia_actual
-            os.system("explorer " + abrir_aqui)
-            print("Abriendo... \n"+abrir_aqui)
-            print("Ya se ha utilizado ese comando hoy.")
-        else:
-            # Si el dia de hoy  NO  está en los días registrados
-            sub_dir = os.path.join(sub_dir, dia_actual)
-            os.mkdir(sub_dir)
-            # Aqui completamos y ejecutamos el Opener
-            abrir_aqui += "\\" + mes_actual + "\\"+dia_actual
-            print("Abriendo... \n"+abrir_aqui)
-            os.system("explorer " + abrir_aqui)
 
-    # Si el mes aun no ha sido registrado
-    else:
-        sub_dir += "\\"+mes_actual
-        os.mkdir(sub_dir)
-        nuevo_dia = os.path.join(sub_dir, dia_actual)
-        os.mkdir(nuevo_dia)
-        # Completamos y ejecutamos el Opener
-        abrir_aqui += "\\" + mes_actual + "\\" + dia_actual
-        # Aqui completamos y ejecutamos el Opener
-        os.system("explorer " + abrir_aqui)
-        print(abrir_aqui)
+def crear_mes_y_dia(directorio, abrir):
+    commons.directorio += "\\"+mes_actual
+    os.mkdir(commons.directorio)
+    nuevo_dia = os.path.join(commons.directorio, dia_actual)
+    os.mkdir(nuevo_dia)
+    # Completamos y ejecutamos el Opener
+    abrir += "\\" + mes_actual + "\\" + dia_actual
+    # Aqui completamos y ejecutamos el Opener
+    print("Abriendo... \n"+abrir)
+    os.system("explorer " + abrir)
+    print(abrir)
 
+
+def crear_dia(directorio, abrir):
+    commons.directorio = os.path.join(commons.directorio, dia_actual)
+    os.mkdir(commons.directorio)
+    # Aqui completamos y ejecutamos el Opener
+    abrir += "\\" + mes_actual + "\\"+dia_actual
+    print("Abriendo... \n"+abrir)
+    os.system("explorer " + abrir)
+
+
+# Si no hay ninguna materia
+if commons.materias is None:
+    print("\n No hay ninguna materia registrada. \n")
 else:
-    print("Porfavor elija una materia existente \n")
-    for materia in materias:
-        print(materia)
+    # Si la materia de parámetro existe
+    if materia_req in commons.materias:
+        # Hace que vayas a ese commons.directorio (el de la materia)
+        commons.directorio += materia_req
+        # Cuáles meses se tiene registrado
+        meses_registrados = commons.ver_folders(commons.directorio)
+        # Le da la materia al Opener
+        commons.abrir_aqui += materia_req
+        # Si no hay ningun mes registrado
+        if meses_registrados is None:
+            crear_mes_y_dia(commons.directorio, commons.abrir_aqui)
+        else:
+            # Si el mes actual esta ahí
+            if mes_actual in meses_registrados:
+                # Aqui creamos el commons.directorio del mes
+                commons.directorio += "\\" + mes_actual
+                # Los dias que ya existen
+                dias_registrados = commons.ver_folders(commons.directorio)
+                # Si no hay ningun dia
+                if dias_registrados is None:
+                    crear_dia(commons.directorio, commons.abrir_aqui)
+                else:
+                    # Si el dia de hoy esta en los días registrados
+                    if dia_actual in dias_registrados:
+                        # Simplemente abrimos la carpeta de ese dia
+                        commons.abrir_aqui += "\\" + mes_actual + "\\"+dia_actual
+                        os.system("explorer " + commons.abrir_aqui)
+                        print("Abriendo... \n"+commons.abrir_aqui)
+                        print("Ya se ha utilizado ese comando hoy.")
+                    else:
+                        crear_dia(commons.directorio, commons.abrir_aqui)
+            else:
+                crear_mes_y_dia(commons.directorio, commons.abrir_aqui)
+    else:
+        print("\n Porfavor elija una de las siguientes materias \n")
+        for materia in commons.materias:
+            print(materia)
