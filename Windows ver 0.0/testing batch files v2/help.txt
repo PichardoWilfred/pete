@@ -23,19 +23,17 @@ add <materia> ...                                 		Para añadir una nueva mater
 
 (ADAPTARLO Y AGREGAR..)
 -Debe de instalarse automaticamente ya sea con un instalador o descargando el archivo y que se 
-ejectue en path.
+ejecute en path.
 -Registrar el nombre puesto del curso. (JSON.)
 
 [Cosas que quiero rehacer o hacer con argsparse]
 
--Poder registrar las materias por medio de la consola
 -Poder registrar nuevas materias por la consola. Una o muchas
 -Puede eliminar las materias añadidas
 
--Abrir por materia, por mes de materia, por dia de materia. (OPEN)
 -Enlistar las materias disponibles (SHOW)
 
--Que el comando principal tenga un -h y una pantalla de mala inserción
+
 -Comando Help bien hecho.
 
 

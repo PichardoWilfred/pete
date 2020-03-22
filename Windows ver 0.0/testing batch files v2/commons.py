@@ -12,9 +12,9 @@ directorio = os.getcwd() + "\\" + curso + "\\"
 def ver_folders(directorio):
     folders = []
     for folder in os.listdir(directorio):
-        if os.path.isdir(directorio+"\\"+folder):
+        if os.path.isdir(os.path.join(directorio, folder)):
             folders.append(folder)
     return folders
 
-    
+
 materias = ver_folders(directorio)

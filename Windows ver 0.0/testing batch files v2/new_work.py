@@ -12,34 +12,32 @@ parser.add_argument(
 args = parser.parse_args()
 
 # La materia que seleccionamos en la que ibamos a trabajar
-materia_req = args.materia
+materia_req = args.materia.upper()
 
 # Fechas
 mes_actual = datetime.datetime.now().strftime("%B")
 dia_actual = datetime.datetime.now() .strftime("%d")
 
+
 # Crear las carpetas del dia y mes actuales.
-
-
 def crear_mes_y_dia(directorio, abrir):
-    commons.directorio += "\\"+mes_actual
+    commons.directorio = os.path.join(commons.directorio, mes_actual)
     os.mkdir(commons.directorio)
     nuevo_dia = os.path.join(commons.directorio, dia_actual)
     os.mkdir(nuevo_dia)
     # Completamos y ejecutamos el Opener
-    abrir += "\\" + mes_actual + "\\" + dia_actual
+    abrir = os.path.join(abrir, mes_actual, dia_actual)
     # Aqui completamos y ejecutamos el Opener
     print("Abriendo... \n"+abrir)
     os.system("explorer " + abrir)
-    print(abrir)
 
 
 def crear_dia(directorio, abrir):
     commons.directorio = os.path.join(commons.directorio, dia_actual)
     os.mkdir(commons.directorio)
     # Aqui completamos y ejecutamos el Opener
-    abrir += "\\" + mes_actual + "\\"+dia_actual
-    print("Abriendo... \n"+abrir)
+    abrir = os.path.join(abrir, mes_actual, dia_actual)
+    print("Abriendo... \n" + abrir)
     os.system("explorer " + abrir)
 
 
@@ -62,7 +60,8 @@ else:
             # Si el mes actual esta ahí
             if mes_actual in meses_registrados:
                 # Aqui creamos el commons.directorio del mes
-                commons.directorio += "\\" + mes_actual
+                commons.directorio = os.path.join(
+                    commons.directorio, mes_actual)
                 # Los dias que ya existen
                 dias_registrados = commons.ver_folders(commons.directorio)
                 # Si no hay ningun dia
@@ -72,7 +71,8 @@ else:
                     # Si el dia de hoy esta en los días registrados
                     if dia_actual in dias_registrados:
                         # Simplemente abrimos la carpeta de ese dia
-                        commons.abrir_aqui += "\\" + mes_actual + "\\"+dia_actual
+                        commons.abrir_aqui = os.path.join(
+                            commons.abrir_aqui, mes_actual, dia_actual)
                         os.system("explorer " + commons.abrir_aqui)
                         print("Abriendo... \n"+commons.abrir_aqui)
                         print("Ya se ha utilizado ese comando hoy.")

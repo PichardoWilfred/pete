@@ -3,10 +3,8 @@ import sys
 import argparse
 import commons
 
-curso = "Curso"
-
 parser = argparse.ArgumentParser(
-    description="Buscar carpetas de trabajo en especifico")
+    description="Busca las carpetas de trabajo en especifico. ")
 parser.add_argument(
     "materia", nargs='?', help="La materia que queremos buscar", default=None)
 parser.add_argument(
@@ -15,6 +13,7 @@ parser.add_argument(
     "dia", nargs='?', help="La dia que queremos buscar", default=None)
 
 args = parser.parse_args()
+
 
 
 def print_err():
@@ -39,6 +38,7 @@ elif args.mes:
     else:
         print_err()
 elif args.materia:
+    args.materia = args.materia.upper()
     commons.abrir_aqui = os.path.join(
         commons.abrir_aqui, args.materia)
     if os.path.isdir(commons.abrir_aqui):
