@@ -15,7 +15,6 @@ parser.add_argument(
 args = parser.parse_args()
 
 
-
 def print_err():
     print("\n La ruta especificada no existe. \n")
 

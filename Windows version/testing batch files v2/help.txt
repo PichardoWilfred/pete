@@ -1,0 +1,28 @@
+﻿						
+�Bievenido a MyPete!
+
+MyPete, es una herramienta que te ayuda a organizar mejor tu trabajo
+desde un sistema de carpetas que permitiran un mejor seguimiento a lo
+realizado en determinados dias.
+			
+
+mypete <carpeta principal o curso>			       Instala el programa y todos sus archivos
+
+new <materia>              				       Dentro del folder de la materia especificada
+								crea un folder del mes (si aun no ha sido registrado) 
+								y el dia en el cual fue escrito el comando.
+
+open <materia> <mes> <dia>				       Abre la carpeta de la materia/mes/dia especificados/as.
+
+show              					       Enlista las materias disponibles.
+
+tree                                    		       Muestra las carpetas creadas hasta el momento.
+
+add <materia> ...                                 	       Para añadir una nueva materia.
+
+
+(ADAPTARLO Y AGREGAR..)
+-Debe de instalarse automaticamente ya sea con un instalador o descargando el archivo y que se 
+ejecute en path.
+-Registrar el nombre puesto del curso. (JSON.)
+-Detailed help command

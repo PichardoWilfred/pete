@@ -47,12 +47,12 @@ if commons.materias is None:
 else:
     # Si la materia de parámetro existe
     if materia_req in commons.materias:
-        # Hace que vayas a ese commons.directorio (el de la materia)
-        commons.directorio += materia_req
+        # Hace que vayas a ese commons.directorio (el de la materia)=
+        commons.directorio = os.path.join(commons.directorio, materia_req)
         # Cuáles meses se tiene registrado
         meses_registrados = commons.ver_folders(commons.directorio)
         # Le da la materia al Opener
-        commons.abrir_aqui += materia_req
+        commons.abrir_aqui = os.path.join(commons.abrir_aqui, materia_req)
         # Si no hay ningun mes registrado
         if meses_registrados is None:
             crear_mes_y_dia(commons.directorio, commons.abrir_aqui)

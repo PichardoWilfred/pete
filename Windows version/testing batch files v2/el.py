@@ -23,7 +23,7 @@ def suave_eliminar():
             respuesta = input("Seguro que desea eliminar: " +
                               materia + " y todo su contenido? (s/n)")
             if respuesta is "s" or "S" or "Si" or "si":
-                shutil.rmtree(materia_eliminar)
+                shutil.rmtree(materia_eliminar, ignore_errors=True)
                 print("El contenido de ", materia, " fue eliminado.")
             elif respuesta is "n" or "N" or "No" or "no":
                 pass
