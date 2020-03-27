@@ -21,11 +21,11 @@ def suave_eliminar():
         materia_eliminar = os.path.join(commons.directorio, materia)
         if os.path.isdir(materia_eliminar):
             respuesta = input("Seguro que desea eliminar: " +
-                              materia + " y todo su contenido? (s/n)")
-            if respuesta is "s" or "S" or "Si" or "si":
+                              materia + " y todo su contenido? (s/n)     ")
+            if respuesta is "s":
                 shutil.rmtree(materia_eliminar, ignore_errors=True)
                 print("El contenido de ", materia, " fue eliminado.")
-            elif respuesta is "n" or "N" or "No" or "no":
+            elif respuesta is "n":
                 pass
             else:
                 print("Su respuesta no es válida. \nElija 's' para si o 'n' para no")
@@ -38,7 +38,7 @@ def fuerte_eliminar():
         materia = materia.upper()
         materia_eliminar = os.path.join(commons.directorio, materia)
     if os.path.isdir(materia_eliminar):
-        shutil.rmtree(materia_eliminar)
+        shutil.rmtree(materia_eliminar, ignore_errors=True)
     else:
         print("\n", materia, " no existe.\n")
 
