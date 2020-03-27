@@ -7,9 +7,9 @@ import shutil
 parser = argparse.ArgumentParser(
     description="Eliminar materias ")
 parser.add_argument(
-    "materias", nargs='*', help="Las materias que querramos eliminar", default=None)
+    "materias", nargs='*', help="Las materias que queremos eliminar", default=None)
 parser.add_argument(
-    "-o", "--open", help="Abrir la carpeta del curso una vez creada", action="store_true")
+    "-o", "--open", help="Abrir la carpeta del curso una vez hallamos terminado", action="store_true")
 parser.add_argument(
     "-f", "--hard", help="Eliminar las materias sin consultar", action="store_true")
 args = parser.parse_args()
@@ -49,4 +49,4 @@ else:
     suave_eliminar()
 
 if args.open:
-    os.system("explorer " + commons.directorio)
+    os.startfile(commons.directorio)

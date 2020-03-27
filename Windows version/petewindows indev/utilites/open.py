@@ -24,7 +24,7 @@ if args.dia:
         commons.abrir_aqui, args.materia, args.mes, args.dia)
     if os.path.isdir(commons.abrir_aqui):
         print("\n"+commons.abrir_aqui)
-        os.system("explorer " + commons.abrir_aqui)
+        os.startfile(commons.abrir_aqui)
     else:
         print_err()
 
@@ -33,7 +33,8 @@ elif args.mes:
         commons.abrir_aqui, args.materia, args.mes)
     if os.path.isdir(commons.abrir_aqui):
         print("\n"+commons.abrir_aqui)
-        os.system("explorer " + commons.abrir_aqui)
+        os.startfile(commons.abrir_aqui)
+
     else:
         print_err()
 elif args.materia:
@@ -42,6 +43,6 @@ elif args.materia:
         commons.abrir_aqui, args.materia)
     if os.path.isdir(commons.abrir_aqui):
         print("\n"+commons.abrir_aqui)
-        os.system("explorer " + commons.abrir_aqui)
+        os.startfile(commons.abrir_aqui)
     else:
         print_err()

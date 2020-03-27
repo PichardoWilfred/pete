@@ -29,7 +29,7 @@ def crear_mes_y_dia(directorio, abrir):
     abrir = os.path.join(abrir, mes_actual, dia_actual)
     # Aqui completamos y ejecutamos el Opener
     print("Abriendo... \n"+abrir)
-    os.system("explorer " + abrir)
+    os.startfile(abrir)
 
 
 def crear_dia(directorio, abrir):
@@ -38,11 +38,12 @@ def crear_dia(directorio, abrir):
     # Aqui completamos y ejecutamos el Opener
     abrir = os.path.join(abrir, mes_actual, dia_actual)
     print("Abriendo... \n" + abrir)
-    os.system("explorer " + abrir)
+    os.startfile(abrir)
+
 
 
 # Si no hay ninguna materia
-if commons.materias is None:
+if len(commons.materias) < 1:
     print("\n No hay ninguna materia registrada. \n")
 else:
     # Si la materia de parámetro existe
@@ -73,7 +74,7 @@ else:
                         # Simplemente abrimos la carpeta de ese dia
                         commons.abrir_aqui = os.path.join(
                             commons.abrir_aqui, mes_actual, dia_actual)
-                        os.system("explorer " + commons.abrir_aqui)
+                        os.startfile(commons.abrir_aqui)
                         print("Abriendo... \n"+commons.abrir_aqui)
                         print("Ya se ha utilizado ese comando hoy.")
                     else:
