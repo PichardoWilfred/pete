@@ -6,8 +6,8 @@ import json
 
 print("""\nBienvenido a C:\Pete> \nPara crear una nueva instancia de pete, escribe abajo lo siguiente:\n
 """)
-nombre_curso = input("El nombre del curso: ")
-direccion = input("Donde quieres que se almacene la instancia:")
+nombre_curso = input(" Nombre del curso: ")
+direccion = input(" Ruta de la nueva instancia:")
 if os.path.isdir(direccion):
     # verificamos si ya hay un archivo de pete_data
     if os.path.exists(os.path.join(direccion, 'pete_data.json')):
@@ -39,4 +39,4 @@ if os.path.isdir(direccion):
             p = os.popen('attrib +h ' + archivo)
         os.startfile(direccion)
 else:
-    print("\nLa ruta especificada no existe\n")
+    print("\nRuta inexistente\n")
