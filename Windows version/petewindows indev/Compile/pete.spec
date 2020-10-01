@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['pete.py'],
-             pathex=['C:\\Users\\gabo_\\Desktop\\Proyectos Personales\\Programming\\pete\\work-automatization\\Windows version\\petewindows indev'],
+             pathex=['C:\\Users\\gabo_\\Desktop\\Proyectos Personales\\Code\\pete\\work-automatization\\Windows version\\petewindows indev\\Compile'],
              binaries=[],
              datas=[],
              hiddenimports=[],

@@ -3,6 +3,7 @@ import sys
 import argparse
 import commons
 
+# Tomamos los argumentos
 parser = argparse.ArgumentParser(
     description="Busca las carpetas de trabajo en especifico. ")
 parser.add_argument(
@@ -19,30 +20,26 @@ def print_err():
     print("\n La ruta especificada no existe. \n")
 
 
-if args.dia:
-    commons.abrir_aqui = os.path.join(
-        commons.abrir_aqui, args.materia, args.mes, args.dia)
-    if os.path.isdir(commons.abrir_aqui):
-        print("\n"+commons.abrir_aqui)
-        os.startfile(commons.abrir_aqui)
+def abrir(directorio):
+    if os.path.isdir(directorio):
+        print("\nAbriendo...")
+        os.startfile(directorio)
     else:
         print_err()
+
+
+args.materia = args.materia.upper()  # Pasa el parámetro de la materia a Mayus
+if args.dia:
+    ruta = os.path.join(
+        commons.curso, args.materia, args.mes, args.dia)
+    abrir(ruta)
 
 elif args.mes:
-    commons.abrir_aqui = os.path.join(
-        commons.abrir_aqui, args.materia, args.mes)
-    if os.path.isdir(commons.abrir_aqui):
-        print("\n"+commons.abrir_aqui)
-        os.startfile(commons.abrir_aqui)
+    ruta = os.path.join(
+        commons.curso, args.materia, args.mes)
+    abrir(ruta)
 
-    else:
-        print_err()
 elif args.materia:
-    args.materia = args.materia.upper()
-    commons.abrir_aqui = os.path.join(
-        commons.abrir_aqui, args.materia)
-    if os.path.isdir(commons.abrir_aqui):
-        print("\n"+commons.abrir_aqui)
-        os.startfile(commons.abrir_aqui)
-    else:
-        print_err()
+    ruta = os.path.join(
+        commons.curso, args.materia)
+    abrir(ruta)

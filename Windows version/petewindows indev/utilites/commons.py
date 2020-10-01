@@ -15,19 +15,17 @@ def get_nombre():
 def get_directorio():
     directorio_local = os.path.join(os.getcwd(), curso)
     if not os.path.exists(directorio_local):
-        print("\nLa carpeta principal del folder no existe\n")
+        print("\nLa carpeta del curso no existe\n")
     else:
         return directorio_local
 
 
 # Nombre del curso
 curso = get_nombre()
-# Ruta que abre
-abrir_aqui = curso
 # Directorio en donde se trabajará
 directorio = get_directorio()
 
-
+#Ver SOLO los folders de dicho directorio
 def ver_folders(directorio):
     folders = []
     for folder in os.listdir(directorio):

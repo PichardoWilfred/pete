@@ -4,6 +4,16 @@ import argparse
 import commons
 import shutil
 
+
+def notificar(materia):
+    print(materia+" fue eliminada.")
+
+
+def eliminar(materia):
+    shutil.rmtree(materia, ignore_errors=True)
+
+
+# Tomamos los argumentos
 parser = argparse.ArgumentParser(
     description="Eliminar materias ")
 parser.add_argument(
@@ -15,38 +25,28 @@ parser.add_argument(
 args = parser.parse_args()
 
 
-def suave_eliminar():
-    for materia in args.materias:
-        materia = materia.upper()
-        materia_eliminar = os.path.join(commons.directorio, materia)
-        if os.path.isdir(materia_eliminar):
-            respuesta = input("Seguro que desea eliminar: " +
-                              materia + " y todo su contenido? (s/n)     ")
-            if respuesta is "s":
-                shutil.rmtree(materia_eliminar, ignore_errors=True)
-                print("El contenido de ", materia, " fue eliminado.")
+for materia in args.materias:
+
+    materia = materia.upper()
+    # Esto convierte el parámetro en una ruta
+    materia_ruta = os.path.join(commons.directorio, materia)
+
+    if os.path.isdir(materia_ruta):  # Si la materia existe
+        if args.hard:  # Y tiene el argumento -f
+            eliminar(materia_ruta)  # Se elimina
+            notificar(materia)
+        else:  # Sino tiene el argumento -f, se pregunta al usuario antes de proceder
+            respuesta = input("Seguro que desea eliminar: \n" +
+                              materia + " y todo su contenido? (s/n)\n")
+            if respuesta is "s":  # Se elimina
+                eliminar(materia_ruta)
+                notificar(materia)
             elif respuesta is "n":
                 pass
             else:
-                print("Su respuesta no es válida. \nElija 's' para si o 'n' para no")
-        else:
-            print("\n", materia, " no existe.\n")
-
-
-def fuerte_eliminar():
-    for materia in args.materias:
-        materia = materia.upper()
-        materia_eliminar = os.path.join(commons.directorio, materia)
-    if os.path.isdir(materia_eliminar):
-        shutil.rmtree(materia_eliminar, ignore_errors=True)
+                print("Su respuesta no es válida. \nElija 's' para si o 'n' para no\n")
     else:
-        print("\n", materia, " no existe.\n")
-
-
-if args.hard:
-    fuerte_eliminar()
-else:
-    suave_eliminar()
+        print("\n"+materia+" no existe\n")
 
 if args.open:
     os.startfile(commons.directorio)
